@@ -1,0 +1,67 @@
+$twitterBlue:#d7ebfd;
+footer {
+  
+    margin-top: 50px;
+    min-height: 100px;
+    background-color: #111;
+    padding-top: 20px;
+    min-width:99vw;
+    clear:both;
+
+  
+    ol {
+      width: 1200px;
+      margin: auto;
+      display:flex;
+      justify-content: flex-start;
+      >li{
+        display:flex;
+        flex-basis:140px;
+        flex:1;
+      }
+      >li:nth-child(1){
+        flex-grow: 6;
+        justify-content: flex-start;
+        .icon-link-twitter{
+          max-width: 98%;
+          min-width:  98%;
+          background-color:transparent;
+          border:dashed 1px darken($twitterBlue,50%);
+        }
+      }
+    }
+  
+    .icon-link-twitter{
+      background-image: url(../imgs/twittericon.svg);
+      background-size:4%;
+      background-position:  12px 8px;
+    }
+  
+    .icon-link-twitter,
+    .icon-link-yelp,
+    .icon-link-facebook {
+      display: block;
+      text-indent: -10000px;
+      background-color: #3a5993;
+      min-height: 50px;
+      position: relative;
+      min-width: 140px;
+      width: 99%;
+      background-repeat: no-repeat;
+    }
+    .icon-link-yelp {
+      background-color: #d52521;
+  
+    }
+  
+    .icon-link-yelp{
+      background-image: url(../imgs/yelpicon.svg);
+      background-size:50%;
+      background-position:  65px 3px;
+    }
+    .icon-link-facebook {
+      background-image: url(../imgs/facebookicon.svg);
+      background-size:10%;
+      background-position: 110px 10px;
+    }
+  }

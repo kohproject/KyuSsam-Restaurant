@@ -1,0 +1,1095 @@
+/*
+Reboot
+Normalization of HTML elements, manually forked from Normalize.css to remove styles targeting irrelevant browsers while applying new styles.
+Normalize is licensed MIT. https://github.com/necolas/normalize.css
+* Bootstrap v4.0.0-beta (https://getbootstrap.com)
+ * Copyright 2011-2017 The Bootstrap Authors
+ * Copyright 2011-2017 Twitter, Inc.
+ * Licensed under MIT (https://github.com/twbs/bootstrap/blob/master/LICENSE)
+*/
+/*
+Document
+1. Change from `box-sizing: content-box` so that `width` is not affected by `padding` or `border`.
+2. Change the default font family in all browsers.
+3. Correct the line height in all browsers.
+4. Prevent adjustments of font size after orientation changes in IE on Windows Phone and in iOS.
+5. Setting @viewport causes scrollbars to overlap content in IE11 and Edge, so we force a non-overlapping, non-auto-hiding scrollbar to counteract.
+6. Change the default tap highlight to be completely transparent in iOS.
+*/
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+  /* 1 */
+}
+
+html {
+  font-family: sans-serif;
+  /* 2 */
+  line-height: 1.15;
+  /* 3 */
+  -webkit-text-size-adjust: 100%;
+  /* 4 */
+  -ms-text-size-adjust: 100%;
+  /* 4 */
+  -ms-overflow-style: scrollbar;
+  /* 5 */
+  -webkit-tap-highlight-color: transparent;
+  /* 6 */
+}
+
+/* IE10+ doesn't honor `<meta name="viewport">` in some cases. */
+@-ms-viewport {
+  width: device-width;
+}
+/* stylelint-disable selector-list-comma-newline-after
+Shim for "new" HTML5 structural elements to display correctly (IE10, older browsers) */
+article, aside, dialog, figcaption, figure, footer, header, hgroup, main, nav, section {
+  display: block;
+}
+
+/*
+Body
+1. Remove the margin in all browsers.
+2. As a best practice, apply a default `background-color`.
+3. Set an explicit initial text-align value so that we can later use the `inherit` value on things like `<th>` elements.
+*/
+body {
+  margin: 0;
+  /* 1 */
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
+  font-size: 1rem;
+  font-weight: normal;
+  line-height: 1.5;
+  color: #212529;
+  text-align: left;
+  /* 3 */
+  background-color: #fff;
+  /* 2 */
+}
+
+/*
+Suppress the focus outline on elements that cannot be accessed via keyboard.
+This prevents an unwanted focus outline from appearing around elements that might still respond to pointer events.
+Credit: https://github.com/suitcss/base
+*/
+[tabindex="-1"]:focus {
+  outline: none !important;
+}
+
+/* 
+Content grouping
+1. Add the correct box sizing in Firefox.
+2. Show the overflow in Edge and IE.
+*/
+hr {
+  box-sizing: content-box;
+  /* 1 */
+  height: 0;
+  /* 1 */
+  overflow: visible;
+  /* 2 */
+}
+
+/* 
+Typography
+*/
+/* 
+Remove top margins from headings
+By default, `<h1>`-`<h6>` all receive top and bottom margins. We nuke the top margin for easier control within type scales as it avoids margin collapsing.
+*/
+h1, h2, h3, h4, h5, h6 {
+  margin-top: 0;
+  margin-bottom: 0.5rem;
+}
+
+/*
+Reset margins on paragraphs
+Similarly, the top margin on `<p>`s get reset. However, we also reset the bottom margin to use `rem` units instead of `em`.
+*/
+p {
+  margin-top: 0;
+  margin-bottom: 1rem;
+}
+
+/*
+Abbreviations
+1. Remove the bottom border in Firefox 39-.
+2. Add the correct text decoration in Chrome, Edge, IE, Opera, and Safari.
+3. Add explicit cursor to indicate changed behavior.
+4. Duplicate behavior to the data-* attribute for our tooltip plugin
+*/
+abbr[title],
+abbr[data-original-title] {
+  /* 4 */
+  text-decoration: underline;
+  /* 2 */
+  -webkit-text-decoration: underline dotted;
+  /* 2 */
+  text-decoration: underline dotted;
+  /* 2 */
+  cursor: help;
+  /* 3 */
+  border-bottom: 0;
+  /* 1 */
+}
+
+address {
+  margin-bottom: 1rem;
+  font-style: normal;
+  line-height: inherit;
+}
+
+ol,
+ul,
+dl {
+  margin-top: 0;
+  margin-bottom: 1rem;
+}
+
+ol ol,
+ul ul,
+ol ul,
+ul ol {
+  margin-bottom: 0;
+}
+
+dt {
+  font-weight: bold;
+}
+
+dd {
+  margin-bottom: 0.5rem;
+  margin-left: 0;
+  /* Undo browser default */
+}
+
+blockquote {
+  margin: 0 0 1rem;
+}
+
+dfn {
+  font-style: italic;
+  /* Add the correct font style in Android 4.3- */
+}
+
+b,
+strong {
+  font-weight: bolder;
+  /* Add the correct font weight in Chrome, Edge, and Safari */
+}
+
+small {
+  font-size: 80%;
+  /* Add the correct font size in all browsers */
+}
+
+sub,
+sup {
+  position: relative;
+  font-size: 75%;
+  line-height: 0;
+  vertical-align: baseline;
+}
+
+sub {
+  bottom: -0.25em;
+}
+
+sup {
+  top: -0.5em;
+}
+
+/*
+Links
+*/
+a {
+  color: #007bff;
+  text-decoration: none;
+  background-color: transparent;
+  /* Remove the gray background on active links in IE 10. */
+  -webkit-text-decoration-skip: objects;
+  /* Remove gaps in links underline in iOS 8+ and Safari 8+. */
+}
+
+a:hover {
+  color: #0056b3;
+  text-decoration: underline;
+}
+
+/*
+And undo these styles for placeholder links/named anchors (without href) which have not been made explicitly keyboard-focusable (without tabindex). It would be more straightforward to just use a[href] in previous block, but that causes specificity issues in many other styles that are too complex to fix.
+See https://github.com/twbs/bootstrap/issues/19402
+*/
+a:not([href]):not([tabindex]) {
+  color: inherit;
+  text-decoration: none;
+}
+
+a:not([href]):not([tabindex]):focus, a:not([href]):not([tabindex]):hover {
+  color: inherit;
+  text-decoration: none;
+}
+
+a:not([href]):not([tabindex]):focus {
+  outline: 0;
+}
+
+/*
+Code
+*/
+pre,
+code,
+kbd,
+samp {
+  font-family: monospace, monospace;
+  /* Correct the inheritance and scaling of font size in all browsers. */
+  font-size: 1em;
+  /* Correct the odd `em` font sizing in all browsers. */
+}
+
+pre {
+  /* Remove browser default top margin */
+  margin-top: 0;
+  /* Reset browser default of `1em` to use `rem`s */
+  margin-bottom: 1rem;
+  /* Don't allow content to break outside */
+  overflow: auto;
+  /* We have @viewport set which causes scrollbars to overlap content in IE11 and Edge, so we force a non-overlapping, non-auto-hiding scrollbar to counteract. */
+  -ms-overflow-style: scrollbar;
+}
+
+/*
+Figures
+*/
+figure {
+  /* Apply a consistent margin strategy (matches our type styles). */
+  margin: 0 0 1rem;
+}
+
+/*
+Images and content
+*/
+img {
+  vertical-align: middle;
+  border-style: none;
+  /* Remove the border on images inside links in IE 10-. */
+}
+
+svg:not(:root) {
+  overflow: hidden;
+  /* Hide the overflow in IE */
+}
+
+/*
+Avoid 300ms click delay on touch devices that support the `touch-action` CSS property.
+In particular, unlike most other browsers, IE11+Edge on Windows 10 on touch devices and IE Mobile 10-11 DON'T remove the click delay when `<meta name="viewport" content="width=device-width">` is present. However, they DO support removing the click delay via `touch-action: manipulation`.
+See:
+* https://getbootstrap.com/docs/4.0/content/reboot/#click-delay-optimization-for-touch
+* https://caniuse.com/#feat=css-touch-action
+*  https://patrickhlauke.github.io/touch/tests/results/#suppressing-300ms-delay
+*/
+a,
+area,
+button,
+[role=button],
+input:not([type=range]),
+label,
+select,
+summary,
+textarea {
+  -ms-touch-action: manipulation;
+  touch-action: manipulation;
+}
+
+/*
+Tables
+*/
+table {
+  border-collapse: collapse;
+  /* Prevent double borders */
+}
+
+caption {
+  padding-top: 0.75rem;
+  padding-bottom: 0.75rem;
+  color: #868e96;
+  text-align: left;
+  caption-side: bottom;
+}
+
+th {
+  /* Matches default `<td>` alignment by inheriting from the `<body>`, or the closest parent with a set `text-align`. */
+  text-align: inherit;
+}
+
+/*
+Forms
+*/
+label {
+  /* Allow labels to use `margin` for spacing. */
+  display: inline-block;
+  margin-bottom: 0.5rem;
+}
+
+/*
+Remove the default `border-radius` that macOS Chrome adds.
+Details at https://github.com/twbs/bootstrap/issues/24093
+*/
+button {
+  border-radius: 0;
+}
+
+/*
+Work around a Firefox/IE bug where the transparent `button` background results in a loss of the default `button` focus styles.
+Credit: https://github.com/suitcss/base/
+*/
+button:focus {
+  outline: 1px dotted;
+  outline: 5px auto -webkit-focus-ring-color;
+}
+
+input,
+button,
+select,
+optgroup,
+textarea {
+  margin: 0;
+  /* Remove the margin in Firefox and Safari */
+  font-family: inherit;
+  font-size: inherit;
+  line-height: inherit;
+}
+
+button,
+input {
+  overflow: visible;
+  /* Show the overflow in Edge */
+}
+
+button,
+select {
+  text-transform: none;
+  /* Remove the inheritance of text transform in Firefox */
+}
+
+/*
+1. Prevent a WebKit bug where (2) destroys native `audio` and `video` controls in Android 4.
+2. Correct the inability to style clickable types in iOS and Safari.
+*/
+button,
+html [type=button],
+[type=reset],
+[type=submit] {
+  -webkit-appearance: button;
+}
+
+/*
+Remove inner border and padding from Firefox, but don't restore the outline like Normalize.
+*/
+button::-moz-focus-inner,
+[type=button]::-moz-focus-inner,
+[type=reset]::-moz-focus-inner,
+[type=submit]::-moz-focus-inner {
+  padding: 0;
+  border-style: none;
+}
+
+input[type=radio],
+input[type=checkbox] {
+  box-sizing: border-box;
+  /* 1. Add the correct box sizing in IE 10- */
+  padding: 0;
+  /* 2. Remove the padding in IE 10- */
+}
+
+input[type=date],
+input[type=time],
+input[type=datetime-local],
+input[type=month] {
+  /* 
+  Remove the default appearance of temporal inputs to avoid a Mobile Safari bug where setting a custom line-height prevents text from being vertically centered within the input.
+
+  See https://bugs.webkit.org/show_bug.cgi?id=139848
+  and https://github.com/twbs/bootstrap/issues/11266
+  */
+  -webkit-appearance: listbox;
+}
+
+textarea {
+  overflow: auto;
+  /* Remove the default vertical scrollbar in IE. */
+  /* Textareas should really only resize vertically so they don't break their (horizontal) containers. */
+  resize: vertical;
+}
+
+fieldset {
+  /* 
+  Browsers set a default `min-width: min-content;` on fieldsets, unlike e.g. `<div>`s, which have `min-width: 0;` by default. So we reset that to ensure fieldsets behave more like a standard block element.
+
+  See https://github.com/twbs/bootstrap/issues/12359
+  and https://html.spec.whatwg.org/multipage/#the-fieldset-and-legend-elements  
+  */
+  min-width: 0;
+  /* Reset the default outline behavior of fieldsets so they don't affect page layout. */
+  padding: 0;
+  margin: 0;
+  border: 0;
+}
+
+/*
+1. Correct the text wrapping in Edge and IE.
+2. Correct the color inheritance from `fieldset` elements in IE.
+*/
+legend {
+  display: block;
+  width: 100%;
+  max-width: 100%;
+  /* 1 */
+  padding: 0;
+  margin-bottom: 0.5rem;
+  font-size: 1.5rem;
+  line-height: inherit;
+  color: inherit;
+  /* 2 */
+  white-space: normal;
+  /* 1 */
+}
+
+progress {
+  vertical-align: baseline;
+  /* Add the correct vertical alignment in Chrome, Firefox, and Opera. */
+}
+
+/* 
+Correct the cursor style of increment and decrement buttons in Chrome.
+*/
+[type=number]::-webkit-inner-spin-button,
+[type=number]::-webkit-outer-spin-button {
+  height: auto;
+}
+
+[type=search] {
+  /* 
+  This overrides the extra rounded corners on search inputs in iOS so that our `.form-control` class can properly style them. Note that this cannot simply be added to `.form-control` as it's not specific enough. 
+
+  For details, see https://github.com/twbs/bootstrap/issues/11586.
+  */
+  outline-offset: -2px;
+  -webkit-appearance: none;
+}
+
+/*
+Remove the inner padding and cancel buttons in Chrome and Safari on macOS.
+*/
+[type=search]::-webkit-search-cancel-button,
+[type=search]::-webkit-search-decoration {
+  -webkit-appearance: none;
+}
+
+/*
+1. Correct the inability to style clickable types in iOS and Safari.
+2. Change font properties to `inherit` in Safari.
+*/
+::-webkit-file-upload-button {
+  font: inherit;
+  -webkit-appearance: button;
+}
+
+/*
+Correct element displays
+*/
+output {
+  display: inline-block;
+}
+
+summary {
+  display: list-item;
+  /* Add the correct display in all browsers */
+}
+
+template {
+  display: none;
+  /* Add the correct display in IE */
+}
+
+/* 
+Always hide an element with the `hidden` HTML attribute (from PureCSS).
+Needed for proper display in IE 10-.
+*/
+[hidden] {
+  display: none !important;
+}
+
+body {
+  margin: 0px;
+}
+
+body * {
+  box-sizing: border-box;
+  background-repeat: no-repeat;
+}
+
+a {
+  text-decoration: none;
+  color: #333;
+}
+
+.fl {
+  float: left;
+}
+
+.fr {
+  float: right;
+}
+
+.cl {
+  clear: both;
+}
+
+.over {
+  overflow: hidden;
+}
+
+.bold {
+  font-weight: bold;
+}
+
+ul, ol,
+ul > li,
+ol > li {
+  margin: 0px;
+  padding: 0px;
+  list-style: none;
+}
+
+.wide10 {
+  width: 9.99%;
+}
+
+.wide20 {
+  width: 19.99%;
+}
+
+.wide30 {
+  width: 29.99%;
+}
+
+.wide40 {
+  width: 39.99%;
+}
+
+.wide50 {
+  width: 49.99%;
+}
+
+.wide60 {
+  width: 59.99%;
+}
+
+.wide70 {
+  width: 69.99%;
+}
+
+.wide80 {
+  width: 79.99%;
+}
+
+.wide90 {
+  width: 89.99%;
+}
+
+.wide100 {
+  width: 100%;
+}
+
+.ml20 {
+  margin-left: 20px;
+}
+
+.ml30 {
+  margin-left: 30px;
+}
+
+.mt25 {
+  margin-top: 25px;
+}
+
+.mt10 {
+  margin-top: 10px;
+}
+
+.mt20 {
+  margin-top: 20px;
+}
+
+.mt30 {
+  margin-top: 30px;
+}
+
+.mt40 {
+  margin-top: 40px;
+}
+
+.mb10 {
+  margin-bottom: 10px;
+}
+
+.mb20 {
+  margin-bottom: 20px;
+}
+
+.mb30 {
+  margin-bottom: 30px;
+}
+
+.mb40 {
+  margin-bottom: 40px;
+}
+
+.ml20 {
+  margin-left: 20px;
+}
+
+.ml30 {
+  margin-left: 30px;
+}
+
+.mt20 {
+  margin-top: 20px;
+}
+
+.mt25 {
+  margin-top: 25px;
+}
+
+.pr60 {
+  padding-right: 60px;
+}
+
+.pt10 {
+  padding-top: 10px;
+}
+
+.pt20 {
+  padding-top: 20px;
+}
+
+.pt30 {
+  padding-top: 30px;
+}
+
+.pt40 {
+  padding-top: 40px;
+}
+
+.pb10 {
+  padding-bottom: 10px;
+}
+
+.pb20 {
+  padding-bottom: 20px;
+}
+
+.pb30 {
+  padding-bottom: 30px;
+}
+
+.pb40 {
+  padding-bottom: 40px;
+}
+
+/* flex start */
+ul, ol,
+.flex {
+  display: flex;
+}
+
+ul,
+.flex.col {
+  flex-direction: column;
+  justify-content: flex-start;
+}
+
+ul > li.flex {
+  display: flex;
+  flex-direction: column;
+}
+
+ol {
+  flex-direction: row;
+}
+
+.fx1 {
+  flex: 1;
+}
+
+.fx2 {
+  flex: 2;
+}
+
+.fx3 {
+  flex: 3;
+}
+
+.fx4 {
+  flex: 4;
+}
+
+.flex.center,
+.flex.col.center {
+  justify-content: center;
+  justify-items: center;
+}
+
+.flexaround {
+  justify-content: space-around;
+}
+
+.flexbetween {
+  justify-content: space-between;
+}
+
+.flexwrap {
+  flex-wrap: wrap;
+}
+
+/* flex end */
+.modal-container {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  width: 100%;
+  min-height: 100vh;
+  display: flex;
+  justify-content: flex-start;
+  flex-direction: column;
+  height: 100%;
+  z-index: 2000;
+  visibility: hidden;
+  opacity: 0;
+  backface-visibility: hidden;
+  transform: rotateX(-50deg) translateY(-200%);
+  perspective: 1000;
+  transition: all 0.3s ease;
+}
+.modal-container:before {
+  content: "";
+  position: absolute;
+  display: block;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  width: 100%;
+  background: #000;
+  opacity: 0;
+  transition: opacity 1s ease;
+}
+.modal-container .modal-content {
+  color: #fff;
+  background: #222;
+  background: url(../imgs/body.gif) repeat #000;
+  position: relative;
+  opacity: 0;
+  width: 0px;
+  height: 0px;
+  left: 50%;
+  top: 50px;
+  transform: scale(0.75) translateX(-50%) translateY(-300%);
+  transition: all 0.2s ease-in;
+}
+.modal-container .modal-content h2 {
+  font-family: "Open Sans";
+  font-style: normal;
+  font-weight: 100;
+  color: #f9f9f9;
+  font-size: 30px;
+  margin: 20px 0px;
+  padding-left: 40px;
+}
+.modal-container .modal-content a.link__close-modal {
+  display: block;
+  width: 44px;
+  height: 44px;
+  opacity: 1;
+  position: absolute;
+  top: 20px;
+  right: 30px;
+  border-radius: 44px;
+}
+.modal-container .modal-content a.link__close-modal:before, .modal-container .modal-content a.link__close-modal:after {
+  content: "";
+  background-color: #fff;
+  display: block;
+  width: 36px;
+  height: 2px;
+  top: 50%;
+  left: 50%;
+  position: absolute;
+  transform: translate(-50%, -50%) rotate(44deg);
+}
+.modal-container .modal-content a.link__close-modal:after {
+  transform: translate(-50%, -50%) rotate(-44deg);
+}
+
+.modal-container.sho {
+  visibility: visible;
+  opacity: 1;
+  transform: rotateX(0deg) translateY(0%);
+  transition: transform 0.2s ease-in;
+}
+.modal-container.sho:before {
+  opacity: 0.9;
+  transition: opacity 1s ease-in;
+}
+.modal-container.sho .modal-content {
+  width: 92%;
+  min-height: 90vh;
+  height: auto;
+  padding-bottom: 30px;
+  border-radius: 8px;
+  overflow: hidden;
+  transform: scale(1) translateX(-50%) translateY(0%);
+  opacity: 1;
+  transition: all 0.4s;
+}
+
+#menu_full.flex.flex-wrap > li {
+  min-width: 40vw;
+}
+
+#sect_photos .wrapper__photo-display,
+#sect_photos .wrapper__photo-icons {
+  min-height: 480px;
+  width: 100%;
+  max-width: 600px;
+  overflow: hidden;
+  background: #222;
+}
+#sect_photos .wrapper__photo-display {
+  max-width: 50%;
+  padding: 5px 10px 30px 10px;
+  margin-left: 20px;
+  margin-right: 20px;
+}
+#sect_photos .wrapper__photo-display .photo-display {
+  width: 90%;
+  position: relative;
+  margin: 30px auto;
+  min-height: 440px;
+  background: #ccc;
+  overflow: hidden;
+}
+#sect_photos .wrapper__photo-display .photo-display img {
+  width: 100%;
+  height: 100%;
+}
+#sect_photos .wrapper__photo-display .photo-display .photo-desc {
+  height: 120px;
+  width: 100%;
+  position: absolute;
+  overflow: hidden;
+  left: 0px;
+  right: 0px;
+  bottom: 0px;
+  transform: translateY(100%);
+}
+#sect_photos .wrapper__photo-display .photo-display .photo-desc .inner {
+  height: 100%;
+  width: 100%;
+  padding: 12px 20px;
+  position: absolute;
+  bottom: 0px;
+  left: 0px;
+  right: 0px;
+}
+#sect_photos .wrapper__photo-display .photo-display .photo-desc .inner h3 {
+  color: #ffffcc;
+  margin-bottom: 4px;
+}
+#sect_photos .wrapper__photo-display .photo-display .photo-desc:before {
+  content: "";
+  display: block;
+  top: 0px;
+  bottom: 0px;
+  height: 100%;
+  left: 0px;
+  background: #000;
+  opacity: 0.9;
+}
+#sect_photos .wrapper__photo-display #photo_display.sho-desc .photo-desc {
+  transform: translateY(0%);
+  transition: transform 0.3s ease-in-out;
+}
+#sect_photos .wrapper__photo-display ol {
+  height: 40px;
+  justify-content: space-between;
+  max-width: 90%;
+  margin: auto;
+}
+#sect_photos .wrapper__photo-display ol > li {
+  height: 40px;
+  width: 48%;
+}
+#sect_photos .wrapper__photo-display ol > li a {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  border: solid 1px #999;
+  width: 100%;
+  height: 40px;
+  background: #000;
+  position: relative;
+  overflow: hidden;
+}
+#sect_photos .wrapper__photo-display ol > li a em {
+  display: block;
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  z-index: 99;
+  background-color: #ccc;
+  top: 0px;
+  left: 0px;
+  opacity: 0;
+  transform: translateY(100%);
+}
+#sect_photos .wrapper__photo-display ol > li a:hover {
+  text-decoration: none;
+  color: #fff;
+}
+#sect_photos .wrapper__photo-display ol > li a:hover em {
+  opacity: 0.2;
+  transform: translateY(0%);
+  transition: all 0.1s ease;
+  transform-origin: bottom;
+}
+#sect_photos .wrapper__photo-display ol > li a:before, #sect_photos .wrapper__photo-display ol > li a:after {
+  content: "";
+  position: absolute;
+  display: block;
+}
+#sect_photos .wrapper__photo-display ol > li a:before {
+  width: 32px;
+  height: 2px;
+  background: #ccc;
+  top: 17.5px;
+  left: 20px;
+}
+#sect_photos .wrapper__photo-display ol > li a:after {
+  width: 16px;
+  height: 16px;
+  border-top: solid 2px #ccc;
+  border-left: solid 2px #ccc;
+  transform: rotate(-44deg);
+  left: 20px;
+}
+#sect_photos .wrapper__photo-display ol > li a.photo-clip-next:before {
+  left: auto;
+  right: 20px;
+}
+#sect_photos .wrapper__photo-display ol > li a.photo-clip-next:after {
+  left: auto;
+  right: 20px;
+  transform: rotate(144deg);
+}
+#sect_photos .wrapper__photo-icons {
+  padding: 30px 0px 0px 20px;
+}
+#sect_photos .wrapper__photo-icons ul.flex.flex-wrap {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+}
+#sect_photos .wrapper__photo-icons ul.flex.flex-wrap > li a {
+  border-color: #111;
+}
+#sect_photos .wrapper__photo-icons ul.flex.flex-wrap > li a.active {
+  border-color: #990000;
+  box-shadow: 1px 1px 4px #000;
+}
+#sect_photos .wrapper__photo-icons ul.flex.flex-wrap > li img {
+  width: 100%;
+  height: 100%;
+}
+
+body {
+  margin: 0px;
+  font-family: "Open Sans", sans-serif;
+  background-color: #222;
+  background: url(../imgs/body.gif) repeat #232323;
+  font-feature-settings: "liga", "kern";
+  text-rendering: optimizelegibility;
+  border-top: solid 7px #cc0000;
+  color: #fff;
+}
+body * {
+  box-sizing: border-box;
+  outline: none;
+}
+body a {
+  color: #fff;
+}
+
+nav {
+  background-color: #333;
+  height: 40px;
+  width: 100%;
+  padding: 0px 20px;
+  position: fixed;
+  top: 7px;
+  color: #fff;
+  font-size: 14px;
+  display: flex;
+  align-items: center;
+}
+nav > ol {
+  margin: auto;
+}
+nav > ol > li {
+  margin-right: 40px;
+}
+.container {
+  width: 100%;
+  min-height: 90vh;
+  position: relative;
+  top: 40px;
+  background: #fff;
+}
+.container .content {
+  width: 100%;
+  height: 100%;
+  min-height: 600px;
+  position: relative;
+  overflow: hidden;
+  color: #333;
+}
+.container .content table {
+  display: table;
+  margin: auto;
+}
+.container .content table thead {
+  background-color: #999;
+}
+.container .content table tbody tr:nth-child(even) {
+  color: #333;
+  background-color: #eee;
+}
+.container .content table tbody tr td {
+  padding: 2px 12px;
+}
+.container .content table tbody tr td.cell__btn-wrap {
+  white-space: nowrap;
+}
+
+table.table__content {
+  width: 90%;
+  margin: 30px auto;
+}
+
+/*# sourceMappingURL=editKyu.css.map */
